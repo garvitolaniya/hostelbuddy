@@ -34,9 +34,9 @@ const SpeechRecognitionComponent: React.FC<SpeechRecognitionProps> = ({
   const recognitionRef = useRef<ISpeechRecognition | null>(null);
   const { toast } = useToast();
 
-  // Update recognition instance when language changes
+  
   useEffect(() => {
-    // Check if speech recognition is supported
+    
     const supported = isSpeechRecognitionSupported();
     setIsSupported(supported);
     
@@ -44,7 +44,7 @@ const SpeechRecognitionComponent: React.FC<SpeechRecognitionProps> = ({
       recognitionRef.current = createSpeechRecognition(language);
     }
     
-    // Cleanup on unmount
+    
     return () => {
       if (recognitionRef.current) {
         stopSpeechRecognition(recognitionRef.current);
@@ -54,11 +54,11 @@ const SpeechRecognitionComponent: React.FC<SpeechRecognitionProps> = ({
 
   const toggleListening = () => {
     if (isListening) {
-      // Stop listening
+      
       stopSpeechRecognition(recognitionRef.current);
       setIsListening(false);
       
-      // If there's an interim transcript, use it as the final result
+      
       if (interimTranscript) {
         onSpeechResult(interimTranscript);
         setInterimTranscript('');
@@ -68,17 +68,17 @@ const SpeechRecognitionComponent: React.FC<SpeechRecognitionProps> = ({
       startSpeechRecognition(
         recognitionRef.current,
         (text) => {
-          // Handle interim results
+          
           setInterimTranscript(text);
         },
         (text) => {
-          // Handle final result
+          
           setIsListening(false);
           onSpeechResult(text);
           setInterimTranscript('');
         },
         (error) => {
-          // Handle errors
+          
           console.error(error);
           setIsListening(false);
           toast({
