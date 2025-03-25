@@ -14,3 +14,11 @@ functionality:
 
 
 many more features to add...
+
+
+all the componenets are assembled using lovable ai 
+and the website is hosted under lovable ai previewer 
+
+link to preview website:
+https://preview--hostel-helper-buddy.lovable.app/
+
