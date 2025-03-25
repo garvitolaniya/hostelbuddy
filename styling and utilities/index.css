@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 210 100% 50%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 210 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    @apply selection:bg-primary/20;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/80 dark:bg-black/50 backdrop-blur-md border border-white/20 shadow-glass;
+  }
+
+  .glass-card {
+    @apply bg-white/90 dark:bg-black/60 backdrop-blur-md rounded-xl border border-white/20 shadow-subtle transition-all duration-300;
+  }
+
+  .glass-button {
+    @apply bg-white/80 dark:bg-black/50 backdrop-blur-md hover:bg-white/90 dark:hover:bg-black/60 
+    active:scale-[0.98] transition-all duration-200 font-medium rounded-lg;
+  }
+
+  .primary-button {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 active:scale-[0.98] 
+    transition-all duration-200 font-medium rounded-lg;
+  }
+
+  .text-input {
+    @apply bg-white/90 dark:bg-black/50 backdrop-blur-md border border-border/70 rounded-lg
+    focus:ring-2 focus:ring-primary/30 focus:border-primary/60 transition-all duration-200;
+    color: #222222;
+    font-weight: 500;
+  }
+
+  .dark .text-input {
+    color: #ffffff;
+  }
+
+  .user-message {
+    @apply bg-primary/15 text-foreground font-medium border border-primary/15 rounded-2xl rounded-tr-sm py-3 px-4;
+  }
+
+  .bot-message {
+    @apply bg-white dark:bg-black/40 text-foreground font-medium border border-border/60 rounded-2xl rounded-tl-sm py-3 px-4;
+  }
+
+  .typing-indicator {
+    @apply flex space-x-1 py-2 px-4;
+  }
+
+  .typing-indicator span {
+    @apply w-2 h-2 bg-primary/70 rounded-full animate-pulse;
+  }
+
+  .typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+/* Custom animations */
+.slide-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.slide-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.message-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.message-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
