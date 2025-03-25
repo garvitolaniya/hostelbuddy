@@ -31,7 +31,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Simulate authentication check
+  
   useEffect(() => {
     const storedUser = localStorage.getItem('hostelHelperUser');
     if (storedUser) {
@@ -40,7 +40,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setLoading(false);
   }, []);
 
-  // Save user to localStorage when it changes
+  
   useEffect(() => {
     if (user) {
       localStorage.setItem('hostelHelperUser', JSON.stringify(user));
@@ -53,13 +53,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (username: string, password: string) => {
     setLoading(true);
     
-    // For this demo, we'll just create a user with the provided username
-    // In a real app, you would verify credentials against your backend
+    
     try {
-      // Simulate API call
+      
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // For demo: admin/admin logs in as admin, anything else as user
+      
       const role: UserRole = username.toLowerCase() === 'admin' && password === 'admin' 
         ? 'admin' 
         : 'user';
@@ -85,7 +84,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(null);
   };
 
-  // Function to switch between user and admin roles (for demo purposes)
+  // Function to switch between user and admin roles (for demo)
   const switchRole = () => {
     if (!user) return;
     
